@@ -25,32 +25,67 @@ class DB:
         self.host = host
     def connect(self):
         #创建数据库对象
-        self.db = pymysql.connect(host=self.host,user=self.user,password=self.password,
-                                  database=self.database,cursorclass=pymysql.cursors.DictCursor)
+        self.db = pymysql.connect(host=self.host,
+                                  user=self.user,
+                                  password=self.password,
+                                  database=self.database,
+                                  cursorclass=pymysql.cursors.DictCursor)
 
         #创建游标
         self.cursor = self.db.cursor()
 
     def close(self):
-        #先关闭游标
-        self.cursor.close()
-        #再关闭数据库
-        self.db.close()
+        try:
+            if self.cursor:
+                self.cursor.close()
+                self.cursor = None  # 防止重复操作
+        except Exception as e:
+            print(f"关闭游标时出错（可能已关闭）: {e}")
+        try:
+            if self.db:
+                self.db.close()
+                self.db = None  # 防止重复操作
+        except Exception as e:
+            print(f"关闭数据库连接时出错（可能已关闭）: {e}")
 
     #查找符合条件的一条数据
-    def Search_One(self,sql):
-        result = None
-        self.connect()  #连接数据库
+    # def Search_One(self,sql):
+    #     result = None
+    #     self.connect()  #连接数据库
+    #     try:
+    #         self.cursor.execute(sql)
+    #         result = self.cursor.fetchone()
+    #         return result
+    #     except:
+    #         traceback.print_exc()   #错误的信息打印在控制台
+    #         self.db.rollback()  #发生异常数据库回滚
+    #         return result
+    #     finally:
+    #         self.close()
+    def Search_One(self, sql, params=None):
+        """
+        执行查询并返回第一条记录。
+
+        Args:
+            sql (str): SQL 语句
+            params (tuple/list, optional): 参数
+
+        Returns:
+            dict or None: 第一条记录或 None
+        """
+        # 不再调用 self.connect()，假设连接已建立
+        if not self.db or not self.cursor:
+            raise Exception("数据库未连接，请先调用 connect()")
+
         try:
-            self.cursor.execute(sql)
+            self.cursor.execute(sql, params)  # 使用参数化查询
             result = self.cursor.fetchone()
-            return result
-        except:
-            traceback.print_exc()   #错误的信息打印在控制台
-            self.db.rollback()  #发生异常数据库回滚
-            return result
-        finally:
-            self.close()
+            return result  # 返回 dict 或 None
+        except Exception as e:
+            print(f"查询执行失败: {sql}, 错误: {e}")
+            # SELECT 通常不需要 rollback, 但可以保留
+            # self.db.rollback()
+            return None  # 或者 raise
 
     #查找符合条件的多条数据
     def Search_All(self,sql):

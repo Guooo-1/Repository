@@ -1,5 +1,3 @@
-import pytest
-
 from base.base_api import *
 import allure
 from ele_loctor.login_loctor import *
@@ -20,4 +18,4 @@ class Login(Base):
     @allure.step("点击登录")
     def click_login(self):
         self.click_ele(*login)
-        sleep(1)
+        sleep(2)

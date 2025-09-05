@@ -91,3 +91,8 @@ class Base:
     def get_content(self,loc_method,loc):
         text = self.find_element(loc_method,loc).text
         return text
+
+    # 获取元素属性值（例如 input 的 value）
+    def get_attribute(self, loc_method, loc, attribute_name):
+        element = self.find_element(loc_method, loc)
+        return element.get_attribute(attribute_name)

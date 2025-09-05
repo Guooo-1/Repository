@@ -1,0 +1,4 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"这是一个登录功能的测试用例","3","测试登录功能","testcase","Tue Sep 02 15:16:15 CST 2025","passed","Tue Sep 02 15:16:15 CST 2025","","test_login","",""
+"","0","test_main_choose","testcase","Tue Sep 02 15:16:36 CST 2025","passed","Tue Sep 02 15:16:36 CST 2025","","test_main_choose","",""
+"","0","test_add_charging_station","testcase","Tue Sep 02 15:15:16 CST 2025","broken","Tue Sep 02 15:15:16 CST 2025","","test_add_charging_station","",""
