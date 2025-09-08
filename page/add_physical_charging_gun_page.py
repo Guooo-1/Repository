@@ -3,7 +3,7 @@ import allure
 from ele_loctor.add_physical_charging_host_loctor import *
 from time import sleep
 from datetime import datetime
-class add_physical_charging_host(Base):
+class add_physical_charging_gun(Base):
     @allure.step('点击外层设备管理')
     def click_equipment_management(self):
         self.click_ele(*equipment_management)
@@ -24,15 +24,15 @@ class add_physical_charging_host(Base):
     def click_associated_product(self):
         self.click_eles(*associated_product)
         sleep(1)
-    @allure.step('选择所属产品-充电主机')
+    @allure.step('选择所属产品-充电枪')
     def choose_associated_product(self):
         self.click_eles(*associated_product)
         #显示等待
         wait = WebDriverWait(self.driver, 10)
-        charging_host_xpath = "(//li[contains(@class, 'el-select-dropdown__item') and .//span[contains(normalize-space(text()), '中能坤域CRZ62-30kW可移动式充电主机')]])[2]"
+        charging_gun_xpath = "(//li[contains(@class, 'el-select-dropdown__item') and .//span[contains(normalize-space(text()), '2023版63A4.6米线长常规直流充电枪')]])[2]"
         try:
             # 等待选项出现在 DOM 中
-            option_ele = wait.until(EC.presence_of_element_located((By.XPATH, charging_host_xpath)))
+            option_ele = wait.until(EC.presence_of_element_located((By.XPATH, charging_gun_xpath)))
             # 滚动到视野中央，使用JavaScript命令滚动页面，使目标元素位于视窗中央。之后调用sleep(0.3)暂停程序0.3秒，以确保滚动操作已完成。
             self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", option_ele)
             sleep(1)  # 等待滚动完成
@@ -46,7 +46,7 @@ class add_physical_charging_host(Base):
     @allure.step('输入设备名称')
     def input_device_name(self):
         date_str = datetime.now().strftime("%Y-%m-%d_%H:%M:%S")
-        self.input_texts(*device_name, f'{date_str}-充电主机')
+        self.input_texts(*device_name, f'{date_str}-充电枪')
         sleep(1)
 
     @allure.step('输入设备SN码')
@@ -101,21 +101,3 @@ class add_physical_charging_host(Base):
     def click_sure_button(self):
         self.click_eles(*sure_button)
         sleep(1)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -7,6 +7,8 @@ from page.login_page import Login
 from page.main_choose_page import main_choose
 from page.add_charging_station_page import add_charging_station
 from page.add_physical_charging_station_page import add_physical_charging_station
+from page.add_physical_charging_gun_page import add_physical_charging_gun
+from page.add_physical_charging_rgv_page import add_physical_charging_rgv
 from page.add_physical_charging_host_page import add_physical_charging_host
 from common.tools import *
 
@@ -119,11 +121,93 @@ def add_physical_physical_station(main_choose_integrated_management,browser_driv
 #新增充电主机
 @pytest.fixture(name = 'add_physical_charging_host')
 def add_physical_charging_host_fixture(main_choose_integrated_management,browser_driver):
-    browser = add_physical_charging_host(browser_driver)
+    browser = add_physical_charging_gun(browser_driver)
     #点击外层设备管理
     browser.click_equipment_management()
     #点击内层设备管理
     browser.click_equipment_management_inner()
     #点击加号
     browser.click_add_button()
+    #点击单个新增
+    browser.click_single_add_button()
+    #点击所属产品
+    browser.click_associated_product()
+    #选择所属产品
+    browser.choose_associated_product()
+    #输入主机名称
+    browser.input_device_name()
+    #点击随机生成
+    browser.click_random_creat()
+    #点击设备分类
+    browser.click_device_type()
+    #选择设备
+    browser.choose_device_type()
+    #点击关联场站
+    browser.click_related_station()
+    #选择关联场站
+    browser.choose_related_station()
+    #点击确定按钮
+    browser.click_sure_button()
+
+#新增物理充电枪
+@pytest.fixture(name = 'add_physical_charging_gun')
+def add_physical_charging_gun_fixture(main_choose_integrated_management,browser_driver):
+    browser = add_physical_charging_gun(browser_driver)
+    #点击外层设备管理
+    browser.click_equipment_management()
+    #点击内层设备管理
+    browser.click_equipment_management_inner()
+    #点击加号
+    browser.click_add_button()
+    #点击单个新增
+    browser.click_single_add_button()
+    #点击所属产品
+    browser.click_associated_product()
+    #选择所属产品
+    browser.choose_associated_product()
+    #输入主机名称
+    browser.input_device_name()
+    #点击随机生成
+    browser.click_random_creat()
+    #点击设备分类
+    browser.click_device_type()
+    #选择设备
+    browser.choose_device_type()
+    #点击关联场站
+    browser.click_related_station()
+    #选择关联场站
+    browser.choose_related_station()
+    #点击确定按钮
+    browser.click_sure_button()
+
+    # 新增物理RGV
+@pytest.fixture(name = 'add_physical_charging_rgv')
+def add_physical_charging_rgv_fixture(main_choose_integrated_management,browser_driver):
+    browser = add_physical_charging_rgv(browser_driver)
+    #点击外层设备管理
+    browser.click_equipment_management()
+    #点击内层设备管理
+    browser.click_equipment_management_inner()
+    #点击加号
+    browser.click_add_button()
+    #点击单个新增
+    browser.click_single_add_button()
+    #点击所属产品
+    browser.click_associated_product()
+    #选择所属产品
+    browser.choose_associated_product()
+    #输入主机名称
+    browser.input_device_name()
+    #点击随机生成
+    browser.click_random_creat()
+    #点击设备分类
+    browser.click_device_type()
+    #选择设备
+    browser.choose_device_type()
+    #点击关联场站
+    browser.click_related_station()
+    #选择关联场站
+    browser.choose_related_station()
+    #点击确定按钮
+    browser.click_sure_button()
 
