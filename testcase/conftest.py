@@ -121,7 +121,7 @@ def add_physical_physical_station(main_choose_integrated_management,browser_driv
 #新增充电主机
 @pytest.fixture(name = 'add_physical_charging_host')
 def add_physical_charging_host_fixture(main_choose_integrated_management,browser_driver):
-    browser = add_physical_charging_gun(browser_driver)
+    browser = add_physical_charging_host(browser_driver)
     #点击外层设备管理
     browser.click_equipment_management()
     #点击内层设备管理
