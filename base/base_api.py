@@ -6,7 +6,6 @@ from selenium.webdriver.support.ui import WebDriverWait     #显示等待
 from selenium.webdriver.support import expected_conditions as EC    #引入 “预设等待条件集合” 并简写为 EC，配合显示等待使用
 from traceback import print_exc     #print_exc 函数会讲当前异常信息输出到标准错误到控制台上
 
-
 class Base:
     def __init__(self,driver):
         self.driver = driver

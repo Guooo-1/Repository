@@ -83,7 +83,7 @@ class add_physical_charging_gun(Base):
     @allure.step('选择关联场站')
     def choose_related_station(self):
         wait = WebDriverWait(self.driver, 10)
-        related_station_xpath = "(//li[contains(@class, 'el-select-dropdown__item') and .//span[contains(normalize-space(text()), 'test-auto-2025-09-04_17:18:11')]])[2]"
+        related_station_xpath = "(//li[contains(@class, 'el-select-dropdown__item') and .//span[contains(normalize-space(text()), 'test0915-001')]])[2]"
         try:
             # 等待选项出现在 DOM 中
             option_ele = wait.until(EC.presence_of_element_located((By.XPATH, related_station_xpath)))

@@ -2,16 +2,13 @@ from base.base_api import *
 import allure
 from ele_loctor.add_physical_charging_station_loctor import *
 from time import sleep
-from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 import random
 from datetime import datetime
 
 class add_physical_charging_station(Base):
-
 
     @allure.step("点击添加按钮")
     def click_add_button(self):
